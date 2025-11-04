@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Hub 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>🌐 Knowledge Hub</h2>
+                <p>2025 Edition</p>
+            </div>
+            
+            <ul class="menu">
+                <li><a href="#" class="menu-item active" data-topic="Artificial Intelligence">🤖 AI & Machine Learning</a></li>
+                <li><a href="#" class="menu-item" data-topic="Quantum Computing">⚛️ Quantum Computing</a></li>
+                <li><a href="#" class="menu-item" data-topic="Renewable Energy">🌞 Renewable Energy</a></li>
+                <li><a href="#" class="menu-item" data-topic="Space Exploration">🚀 Space Exploration</a></li>
+                <li><a href="#" class="menu-item" data-topic="Biotechnology">🧬 Biotechnology</a></li>
+                <li><a href="#" class="menu-item" data-topic="Blockchain">⛓️ Blockchain Tech</a></li>
+                <li><a href="#" class="menu-item" data-topic="Virtual Reality">🥽 Virtual Reality</a></li>
+                <li><a href="#" class="menu-item" data-topic="Climate Change">🌍 Climate Change</a></li>
+                <li><a href="#" class="menu-item" data-topic="Neuroscience">🧠 Neuroscience</a></li>
+                <li><a href="#" class="menu-item" data-topic="Sustainable Development">🌱 Sustainable Development</a></li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <p>Powered by Wikipedia API</p>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-content">
+                    <h1 id="article-title">Welcome to Knowledge Hub</h1>
+                    <p id="article-description">Select a topic from the menu to explore fascinating articles</p>
+                </div>
+                <div class="theme-toggle">
+                    <button id="theme-switcher">🌙 Dark Mode</button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="article-container">
+                    <div class="article-loading" id="loading">
+                        <div class="loading-spinner"></div>
+                        <p>Loading knowledge...</p>
+                    </div>
+                    
+                    <div class="article-content" id="article-content">
+                        <div class="welcome-message">
+                            <div class="welcome-icon">✨</div>
+                            <h2>Discover the Future</h2>
+                            <p>Explore cutting-edge topics in technology, science, and innovation. Each selection reveals comprehensive insights from Wikipedia's vast knowledge base.</p>
+                            <div class="feature-grid">
+                                <div class="feature-card">
+                                    <div class="feature-icon">🚀</div>
+                                    <h3>Latest Topics</h3>
+                                    <p>Stay updated with 2025's most relevant subjects</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">📚</div>
+                                    <h3>Verified Sources</h3>
+                                    <p>All content sourced from Wikipedia's reliable database</p>
+                                </div>
+                                <div class="feature-card">
+                                    <div class="feature-icon">🎨</div>
+                                    <h3>Modern Design</h3>
+                                    <p>Experience clean, futuristic interface design</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
