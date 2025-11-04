@@ -1,187 +1,343 @@
-class WikipediaReader {
-    constructor() {
-        this.currentTopic = '';
-        this.init();
+/* Enhanced Article Styles */
+.article-header {
+    margin-bottom: 2.5rem;
+}
+
+.article-hero {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 0.5rem;
+}
+
+.image-caption {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+.article-intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.article-description {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.article-extract {
+    background: var(--sidebar-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.article-extract p {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Wikipedia Content Enhancements */
+.wikipedia-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.content-section h2 {
+    font-size: 1.75rem;
+    color: var(--text-color);
+    margin: 2.5rem 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.content-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 2rem 0 1rem 0;
+}
+
+.content-section h4 {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.content-notice {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #856404;
+    font-size: 1rem;
+}
+
+[data-theme="dark"] .content-notice {
+    background: #332701;
+    border-color: #665600;
+    color: #f1c40f;
+}
+
+/* Related Topics */
+.related-topics {
+    background: var(--sidebar-bg);
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    border: 1px solid var(--border-color);
+}
+
+.related-topics h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.topics-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.topic-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.topic-tag:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Article Actions */
+.article-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.action-btn.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.action-btn.secondary {
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.action-btn.primary:hover {
+    background: var(--primary-dark);
+}
+
+.action-btn.secondary:hover {
+    background: var(--border-color);
+}
+
+/* Error State */
+.error-state {
+    text-align: center;
+    padding: 3rem;
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.error-state h2 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.error-details {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.error-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Meta Information */
+.meta-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.article-date {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Additional Info Styles */
+.additional-info {
+    background: var(--sidebar-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.additional-info h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.additional-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.additional-info li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.additional-info li:last-child {
+    border-bottom: none;
+}
+
+/* Explore More Section */
+.explore-more {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.explore-more h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.explore-more p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+}
+
+[data-theme="dark"] .explore-more {
+    background: linear-gradient(135deg, #4f46e5, #059669);
+}
+
+/* Print Styles */
+@media print {
+    .sidebar, .content-header, .article-actions, .related-topics {
+        display: none;
     }
-
-    init() {
-        this.setupEventListeners();
-        this.setupTheme();
+    
+    .main-content {
+        margin-left: 0;
     }
-
-    setupEventListeners() {
-        // Menu item clicks
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.handleMenuClick(e.target);
-            });
-        });
-
-        // Theme switcher
-        document.getElementById('theme-switcher').addEventListener('click', () => {
-            this.toggleTheme();
-        });
-    }
-
-    setupTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        this.updateThemeButton(savedTheme);
-    }
-
-    toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        this.updateThemeButton(newTheme);
-    }
-
-    updateThemeButton(theme) {
-        const button = document.getElementById('theme-switcher');
-        button.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
-    }
-
-    handleMenuClick(element) {
-        const menuItem = element.closest('.menu-item');
-        const topic = menuItem.dataset.topic;
-
-        // Update active state
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        menuItem.classList.add('active');
-
-        // Load article
-        this.loadWikipediaArticle(topic);
-    }
-
-    async loadWikipediaArticle(topic) {
-        this.showLoading();
-        this.currentTopic = topic;
-
-        try {
-            const response = await fetch(
-                `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(topic)}`
-            );
-
-            if (!response.ok) {
-                throw new Error('Article not found');
-            }
-
-            const data = await response.json();
-            this.displayArticle(data);
-        } catch (error) {
-            this.displayError(error);
-        } finally {
-            this.hideLoading();
-        }
-    }
-
-    displayArticle(data) {
-        const contentDiv = document.getElementById('article-content');
-        const titleElement = document.getElementById('article-title');
-        const descriptionElement = document.getElementById('article-description');
-
-        // Update header
-        titleElement.textContent = data.title;
-        descriptionElement.textContent = data.description || 'Exploring knowledge from Wikipedia';
-
-        // Create article content
-        contentDiv.innerHTML = `
-            <div class="article-meta">
-                <span class="article-source">📚 Source: Wikipedia</span>
-                <a href="${data.content_urls.desktop.page}" target="_blank" class="read-more">
-                    Read Full Article →
-                </a>
-            </div>
-            <div class="wikipedia-content">
-                ${data.thumbnail ? `<img src="${data.thumbnail.source}" alt="${data.title}" style="max-width: 100%; border-radius: 8px; margin-bottom: 1.5rem;">` : ''}
-                <h2>${data.title}</h2>
-                <p>${data.extract}</p>
-                ${this.generateRelatedTopics()}
-            </div>
-        `;
-    }
-
-    generateRelatedTopics() {
-        const relatedTopics = [
-            'Machine Learning', 'Deep Learning', 'Neural Networks', 
-            'Computer Vision', 'Natural Language Processing'
-        ];
-
-        if (this.currentTopic.toLowerCase().includes('ai') || 
-            this.currentTopic.toLowerCase().includes('artificial')) {
-            return `
-                <div style="margin-top: 2rem; padding: 1.5rem; background: var(--sidebar-bg); border-radius: 8px;">
-                    <h3 style="margin-bottom: 1rem;">🔗 Related Topics</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        ${relatedTopics.map(topic => 
-                            `<span style="background: var(--primary-color); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.875rem;">${topic}</span>`
-                        ).join('')}
-                    </div>
-                </div>
-            `;
-        }
-        return '';
-    }
-
-    displayError(error) {
-        const contentDiv = document.getElementById('article-content');
-        contentDiv.innerHTML = `
-            <div style="text-align: center; padding: 2rem;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">😕</div>
-                <h2>Article Not Found</h2>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
-                    We couldn't find the requested article. Please try another topic.
-                </p>
-                <button onclick="location.reload()" style="background: var(--primary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer;">
-                    Try Again
-                </button>
-            </div>
-        `;
-    }
-
-    showLoading() {
-        document.getElementById('loading').classList.add('active');
-        document.getElementById('article-content').style.opacity = '0.5';
-    }
-
-    hideLoading() {
-        document.getElementById('loading').classList.remove('active');
-        document.getElementById('article-content').style.opacity = '1';
+    
+    .article-content {
+        box-shadow: none;
+        border: none;
+        padding: 0;
     }
 }
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', () => {
-    new WikipediaReader();
-});
+/* Enhanced Responsive Design */
+@media (max-width: 968px) {
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .article-actions {
+        justify-content: center;
+    }
+    
+    .action-btn {
+        flex: 1;
+        min-width: 200px;
+        text-align: center;
+    }
+    
+    .topics-grid {
+        justify-content: center;
+    }
+}
 
-// Add some interactive effects
-document.addEventListener('DOMContentLoaded', () => {
-    // Add hover effects to menu items
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateX(8px)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            if (!this.classList.contains('active')) {
-                this.style.transform = 'translateX(0)';
-            }
-        });
-    });
-
-    // Add parallax effect to header
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.content-header');
-        if (parallax) {
-            parallax.style.transform = `translateY(${scrolled * 0.1}px)`;
-        }
-    });
-});
+@media (max-width: 768px) {
+    .article-intro h1 {
+        font-size: 2rem;
+    }
+    
+    .article-description {
+        font-size: 1.1rem;
+    }
+    
+    .wikipedia-content {
+        font-size: 1rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .content-section h3 {
+        font-size: 1.3rem;
+    }
+}
