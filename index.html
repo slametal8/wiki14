@@ -6,14 +6,29 @@
     <title>Knowledge Hub 2025</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
+        <!-- Sidebar Kiri -->
         <nav class="sidebar">
             <div class="logo">
                 <h2>🌐 Knowledge Hub</h2>
                 <p>2025 Edition</p>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search Wikipedia...">
+                    <button id="search-btn" class="search-button">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions" id="search-suggestions">
+                    <!-- Suggestions will appear here -->
+                </div>
             </div>
             
             <ul class="menu">
@@ -31,6 +46,11 @@
             
             <div class="sidebar-footer">
                 <p>Powered by Wikipedia API</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </nav>
 
@@ -41,8 +61,15 @@
                     <h1 id="article-title">Welcome to Knowledge Hub</h1>
                     <p id="article-description">Select a topic from the menu to explore fascinating articles</p>
                 </div>
-                <div class="theme-toggle">
-                    <button id="theme-switcher">🌙 Dark Mode</button>
+                <div class="header-actions">
+                    <div class="theme-toggle">
+                        <button id="theme-switcher" class="theme-btn">
+                            <i class="fas fa-moon"></i> Dark Mode
+                        </button>
+                    </div>
+                    <button id="toggle-right-sidebar" class="sidebar-toggle">
+                        <i class="fas fa-external-link-alt"></i> Quick Links
+                    </button>
                 </div>
             </header>
 
@@ -60,9 +87,9 @@
                             <p>Explore cutting-edge topics in technology, science, and innovation. Each selection reveals comprehensive insights from Wikipedia's vast knowledge base.</p>
                             <div class="feature-grid">
                                 <div class="feature-card">
-                                    <div class="feature-icon">🚀</div>
-                                    <h3>Latest Topics</h3>
-                                    <p>Stay updated with 2025's most relevant subjects</p>
+                                    <div class="feature-icon">🔍</div>
+                                    <h3>Smart Search</h3>
+                                    <p>Search any topic across Wikipedia with intelligent suggestions</p>
                                 </div>
                                 <div class="feature-card">
                                     <div class="feature-icon">📚</div>
@@ -70,9 +97,9 @@
                                     <p>All content sourced from Wikipedia's reliable database</p>
                                 </div>
                                 <div class="feature-card">
-                                    <div class="feature-icon">🎨</div>
-                                    <h3>Modern Design</h3>
-                                    <p>Experience clean, futuristic interface design</p>
+                                    <div class="feature-icon">⚡</div>
+                                    <h3>Quick Access</h3>
+                                    <p>Fast links to related articles and external resources</p>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +107,149 @@
                 </div>
             </div>
         </main>
+
+        <!-- Sidebar Kanan -->
+        <aside class="right-sidebar" id="right-sidebar">
+            <div class="sidebar-header">
+                <h3>🔗 Quick Links</h3>
+                <button id="close-right-sidebar" class="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="quick-links">
+                <div class="link-category">
+                    <h4>🌐 Popular Articles</h4>
+                    <div class="link-list">
+                        <a href="#" class="quick-link" data-topic="Machine Learning">
+                            <i class="fas fa-brain"></i>
+                            <span>Machine Learning</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Artificial Intelligence">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Development</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Data Science">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Data Science</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Internet of Things">
+                            <i class="fas fa-network-wired"></i>
+                            <span>IoT</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="link-category">
+                    <h4>🚀 Technology</h4>
+                    <div class="link-list">
+                        <a href="#" class="quick-link" data-topic="5G">
+                            <i class="fas fa-wifi"></i>
+                            <span>5G Technology</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Cybersecurity">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Cybersecurity</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Cloud Computing">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud Computing</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Augmented Reality">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <span>Augmented Reality</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="link-category">
+                    <h4>🔬 Science</h4>
+                    <div class="link-list">
+                        <a href="#" class="quick-link" data-topic="Genetics">
+                            <i class="fas fa-dna"></i>
+                            <span>Genetics</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Climate Science">
+                            <i class="fas fa-temperature-high"></i>
+                            <span>Climate Science</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Astrophysics">
+                            <i class="fas fa-star"></i>
+                            <span>Astrophysics</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Nanotechnology">
+                            <i class="fas fa-atom"></i>
+                            <span>Nanotechnology</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="link-category">
+                    <h4>📈 Trending</h4>
+                    <div class="link-list">
+                        <a href="#" class="quick-link" data-topic="ChatGPT">
+                            <i class="fas fa-comment-alt"></i>
+                            <span>ChatGPT</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Metaverse">
+                            <i class="fas fa-cube"></i>
+                            <span>Metaverse</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Web3">
+                            <i class="fas fa-globe"></i>
+                            <span>Web3</span>
+                        </a>
+                        <a href="#" class="quick-link" data-topic="Sustainable Technology">
+                            <i class="fas fa-leaf"></i>
+                            <span>Green Tech</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="link-category">
+                    <h4>🎓 Learning Resources</h4>
+                    <div class="link-list">
+                        <a href="https://en.wikipedia.org/wiki/Portal:Contents" target="_blank" class="quick-link external">
+                            <i class="fas fa-book-open"></i>
+                            <span>Wikipedia Portal</span>
+                            <i class="fas fa-external-link-alt external-icon"></i>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Portal:Current_events" target="_blank" class="quick-link external">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Current Events</span>
+                            <i class="fas fa-external-link-alt external-icon"></i>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Help:Contents" target="_blank" class="quick-link external">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Wikipedia Help</span>
+                            <i class="fas fa-external-link-alt external-icon"></i>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="quick-link external">
+                            <i class="fas fa-random"></i>
+                            <span>Random Article</span>
+                            <i class="fas fa-external-link-alt external-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer-right">
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-book"></i>
+                        <span>6M+ Articles</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-language"></i>
+                        <span>300+ Languages</span>
+                    </div>
+                </div>
+                <p>Free knowledge for everyone</p>
+            </div>
+        </aside>
+
+        <!-- Overlay untuk mobile -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
     </div>
 
     <script src="script.js"></script>
